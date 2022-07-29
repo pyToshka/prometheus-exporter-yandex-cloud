@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  grafana:
+    image: "grafana/grafana-oss"
+    ports:
+     - "3000:3000"
+    volumes:
+       - ./data/grafana_data:/var/lib/grafana
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./data/prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - "9090:9090"
+  exporter:
+    build: .
+    ports:
+     - "9000:9000"
+    environment:
+      YC_FOLDER_ID: ${YC_FOLDER_ID}
+      YC_TOKEN: ${YC_TOKEN}

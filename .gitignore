@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*$py.class
+data
+api-key.yml
+.env
+tmp_*.py
+.idea/

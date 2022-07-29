@@ -1,0 +1,2 @@
+[bandit]
+skips: B201,B104
