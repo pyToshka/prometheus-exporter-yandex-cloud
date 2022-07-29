@@ -4,6 +4,7 @@ import os
 import requests
 from flask import Flask, Response
 from flask_caching import Cache
+import sys
 
 config = {"DEBUG": True, "CACHE_TYPE": "SimpleCache", "CACHE_DEFAULT_TIMEOUT": 300}
 
@@ -108,7 +109,7 @@ if __name__ == "__main__":
             f"please export variables YC_TOKEN and YC_FOLDER_ID are required"
             f"Documentations reference https://cloud.yandex.com/en/docs/monitoring/api-ref/authentication"
         )
-        exit(1)
+        sys.exit(1)
     monitoring_endpoint = (
         "https://monitoring.api.cloud.yandex.net/monitoring/v2/prometheusMetrics"
     )
