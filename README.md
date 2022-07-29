@@ -1,4 +1,5 @@
 # Prometheus exporter for Yandex cloud
+Simple Prometheus for Yandex cloud metrics, based on [prometheusMetrics](https://cloud.yandex.com/en/docs/monitoring/api-ref/MetricsData/prometheusMetrics)
 
 ## Pre-requirements
 - Python 3.8 for running without docker
